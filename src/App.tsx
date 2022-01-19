@@ -3,15 +3,20 @@ import './App.css';
 import { AddTodoForm } from './component/AddTodoForm';
 import { TodoList } from './component/TodoList';
 
-const initialTodos: Array<Todo> = [
-    {position: 0, text: "Walk the dog", complete: true},
-    {position: 1, text: "Write app", complete: false},
-    {position: 2, text: "100 push ups", complete: true},
-    {position: 3, text: "10km run", complete: false},
-]
+const initialTodos: Array<Todo> = []
 
 const sortArrayTodo = (arr: Array<Todo>) => {
-    
+    let i=0,j=0;
+
+    while(j<arr.length && i<arr.length){
+        if(arr[i].complete && !arr[j].complete)
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+        if(!arr[i].complete) i+=1;
+        if(arr[j].complete) j+=1;
+        if(i>j) j=i;
+    }
+
+    return arr;
 }
 
 function App() {
@@ -27,13 +32,21 @@ function App() {
             }
             return todo;
         })
-        setTodos(newTodos);
-        console.log(newTodos);
+        setTodos(sortArrayTodo(newTodos));
     }
 
     const addTodo: AddTodo = (newTodo) => {
         newTodo.trim() !== "" &&
-        setTodos([...todos, {position: todos.length, text: newTodo, complete: false}])
+        setTodos(
+            sortArrayTodo([
+                ...todos,
+                {
+                    position: todos.length,
+                    text: newTodo,
+                    complete: false
+                }
+            ])
+        )
     }
 
     return (
