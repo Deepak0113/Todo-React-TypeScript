@@ -1,0 +1,31 @@
+.AddTodoForm{
+    margin-top: 5px;
+    display: flex;
+    
+    input[type="text"]{
+        flex: 1;
+        padding: 5px 7px;
+        border: 2px solid #000;
+        border-radius: 2px;
+        font-size: 14px;
+    }
+
+    button{
+        margin-left: 5px;
+        padding: 0 7px;
+        border: 2px solid #000;
+        border-radius: 2px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: .1s ease-out;
+    }
+
+    button:hover{
+        background-color: crimson;
+        border-color: crimson;
+        color: #fff;
+        transition: .1s ease-in;
+    }
+}
