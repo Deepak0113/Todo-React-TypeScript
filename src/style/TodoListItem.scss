@@ -11,8 +11,31 @@
     border-bottom: 1px solid #000;
     cursor: pointer;
 
-    p{
+    .para{
+        width: 100%;
+        padding: 2px 5px;
         margin-left: 10px;
+        word-wrap: break-word;
+        border: 2px solid transparent;
+        border-radius: 2px;
+        outline: none;
+
+        &:focus{
+            border: 2px solid rgb(49, 49, 49);
+        }
+    }
+
+    div{
+        display: flex;
+    }
+
+    button{
+        margin-left: 10px;
+        border: none;
+        border-radius: 50%;
+        padding: 4px;
+        background-color: rgb(49, 49, 49);
+        cursor: pointer;
     }
 }
 

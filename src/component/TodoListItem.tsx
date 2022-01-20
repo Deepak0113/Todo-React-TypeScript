@@ -4,13 +4,17 @@ import '../style/TodoListItem.scss';
 interface TodoListItemProps{
     todo: Todo;
     toggleTodo: ToggleTodo;
+    removeTodo: ToggleTodo;
 }
 
-export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo }) => {
+export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleTodo, removeTodo }) => {
     return (
-        <div className={"TodoListItem" + (todo.complete ? " complete" : "")}>
-            <input type="checkbox" className="form-check-input" checked={todo.complete} onChange={() => toggleTodo(todo)}/>
-            <p>{todo.text}</p>
+        <div className="TodoListItem">
+            <div>
+                <input type="checkbox" className="form-check-input" checked={todo.complete} onChange={() => toggleTodo(todo)}/>
+            </div>
+            <div className={"para" + (todo.complete ? " complete" : "")} contentEditable={true} suppressContentEditableWarning={true}>{todo.text}</div>
+            <button onClick={() => removeTodo(todo)}>❌</button>
         </div>
-    );
+    )
 };
